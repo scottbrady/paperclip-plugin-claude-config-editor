@@ -1,0 +1,25 @@
+node_modules/
+dist/
+.env
+*.tsbuildinfo
+drizzle/meta/
+.vite/
+coverage/
+.DS_Store
+data/
+.paperclip/
+.pnpm-store/
+tmp-*
+cli/tmp/
+
+tmp/
+
+# Editor / tool temp files
+*.tmp
+.vscode/
+.claude/settings.local.json
+/.idea/
+/.agents/
+
+.claude/worktrees/
+
