@@ -3,11 +3,10 @@ import { promises as fs } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-// Plugin workers run in a sandboxed environment without PAPERCLIP_HOME.
-// Use HOME directly — in Docker containers this is set to the data directory
-// (e.g. /app/data/paperclip), and locally it's the user's home directory.
-// The Claude config files live at ~/.claude.json and ~/.claude/.credentials.json.
-const HOME_DIR = os.homedir();
+// Resolve the home directory from environment variables first, since
+// os.homedir() reads /etc/passwd and may return the wrong path in Docker
+// containers (e.g. /home/node instead of /app/data/paperclip).
+const HOME_DIR = process.env.AGENT_HOME || process.env.HOME || os.homedir();
 const CLAUDE_JSON_PATH = path.resolve(HOME_DIR, ".claude.json");
 const CLAUDE_CREDENTIALS_PATH = path.resolve(HOME_DIR, ".claude", ".credentials.json");
 

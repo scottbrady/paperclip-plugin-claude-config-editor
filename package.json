@@ -1,6 +1,6 @@
 {
   "name": "paperclip-plugin-claude-config-editor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Plugin that allows instance admins to edit Claude Code configuration files through the Paperclip settings UI",
   "type": "module",
   "license": "MIT",
