@@ -1,11 +1,18 @@
 {
-  "name": "@paperclipai/plugin-claude-config-editor",
+  "name": "paperclip-plugin-claude-config-editor",
   "version": "1.0.0",
   "description": "Plugin that allows instance admins to edit Claude Code configuration files through the Paperclip settings UI",
   "type": "module",
-  "private": true,
+  "license": "MIT",
+  "author": "Scott Brady",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paperclipai/plugin-claude-config-editor.git"
+  },
+  "keywords": ["paperclip", "plugin", "claude", "config"],
+  "files": ["dist", "LICENSE", "README.md"],
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./dist/index.js"
   },
   "paperclipPlugin": {
     "manifest": "./dist/manifest.js",
@@ -17,7 +24,8 @@
     "dev": "node ./esbuild.config.mjs --watch",
     "dev:ui": "paperclip-plugin-dev-server --root . --ui-dir dist/ui --port 4177",
     "clean": "rm -rf dist",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build && npm run typecheck"
   },
   "dependencies": {
     "@paperclipai/plugin-sdk": "^2026.325.0"
